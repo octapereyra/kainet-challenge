@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import {
   Position,
@@ -6,12 +6,14 @@ import {
   PositionResponse,
 } from '../interfaces/position.interfaces';
 import { PositionMapper } from '../mapper/position.mapper';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PositionsService {
   private http = inject(HttpClient);
+  private routerService = inject(Router);
 
   listPositions = signal<Position[]>([]);
   listPositionsLoading = signal(true);
@@ -38,9 +40,17 @@ export class PositionsService {
         'http://127.0.0.1:8000/api/posiciones',
         newPosition
       )
-      .subscribe((response) => {
-        console.log('Position created successfully:', response);
-        this.loadPositions();
+      .subscribe({
+        next: () => {
+          this.loadPositions();
+          this.routerService.navigate(['listPositions']);
+          alert('Posición creada correctamente');
+        },
+        error: (error: HttpErrorResponse) => {
+          alert(
+            `Ha ocurrido un error al crear la posición: ${error.status} - ${error.error.message}`
+          );
+        },
       });
   }
 }

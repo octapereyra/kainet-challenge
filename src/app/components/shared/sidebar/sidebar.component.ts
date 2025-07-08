@@ -1,16 +1,14 @@
 import { NgClass } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
-  templateUrl: './sidebar.html',
-  styleUrls: ['./sidebar.css'],
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.css'],
   imports: [NgClass, RouterLink, RouterLinkActive],
 })
 export class SidebarComponent {
-  showSidebar = input.required<boolean>();
-
   menuItems = [
     {
       label: 'Inicio',
@@ -28,4 +26,10 @@ export class SidebarComponent {
       link: 'createPosition',
     },
   ];
+
+  showSidebar = input.required<boolean>();
+  closeSidebar = output<boolean>();
+  hideSidebar() {
+    this.closeSidebar.emit(false);
+  }
 }

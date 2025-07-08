@@ -8,19 +8,16 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-position',
   imports: [ReactiveFormsModule],
-  templateUrl: './create-position.html',
-  styleUrl: './create-position.css',
+  templateUrl: './create-position.component.html',
 })
 export class CreatePosition {
   public companiesService = inject(CompaniesService);
   public productsService = inject(ProductsService);
   public positionService = inject(PositionsService);
-  public routerService = inject(Router);
 
   positionForm: FormGroup;
 
@@ -37,11 +34,9 @@ export class CreatePosition {
   onSubmit() {
     if (this.positionForm.valid) {
       const positionData = this.positionForm.value;
-      console.log('Position Data:', positionData);
       this.positionService.createPosition(positionData);
-      this.routerService.navigate(['listPositions']);
     } else {
-      console.log('Form is invalid');
+      alert('Por favor, complete todos los campos requeridos.');
     }
   }
 }

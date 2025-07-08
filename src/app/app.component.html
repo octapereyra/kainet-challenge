@@ -1,7 +1,10 @@
-<app-navbar (showSidebar)="toggleSidebar($event)" />
+<app-navbar (showSidebar)="toggleSidebar()" />
 <div class="main-wrapper">
   <div class="d-flex">
-    <app-sidebar [showSidebar]="showSidebar" />
+    <app-sidebar
+      [showSidebar]="showSidebar()"
+      (closeSidebar)="showSidebar.set($event)"
+    />
     <div class="main-content flex-grow-1">
       <div class="content-wrapper">
         <div class="container-fluid p-4">

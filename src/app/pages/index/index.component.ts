@@ -3,9 +3,6 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-index',
   imports: [],
-  templateUrl: './index.html',
-  styleUrl: './index.css'
+  templateUrl: './index.component.html',
 })
-export class Index {
-
-}
+export class Index {}
