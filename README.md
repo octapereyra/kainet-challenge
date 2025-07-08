@@ -1,59 +1,79 @@
-# KainetChallenge
+# Kainet challenge
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.5.
+Una aplicación web moderna desarrollada con Angular 20.
 
-## Development server
+## Deploy en vercel
 
-To start a local development server, run:
+https://kainet-challenge.vercel.app/
+
+## Instalación (local)
+
+## Requisitos previos
+
+Asegúrate de tener instalado:
+
+- [Node.js](https://nodejs.org/) (versión 18 o superior)
+- [npm](https://www.npmjs.com/) (viene incluido con Node.js)
+- [Angular CLI](https://angular.io/cli) (versión 20 o superior)
+
+1. Clona este repositorio:
+
+```bash
+git clone https://github.com/octapereyra/kainet-challenge.git
+cd kainet-challenge
+```
+
+2. Instala las dependencias:
+
+```bash
+npm install
+```
+
+## Comandos disponibles
+
+### Servidor de desarrollo
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Inicia un servidor de desarrollo en `http://localhost:4200/`. La aplicación se recarga automáticamente cuando modificas los archivos.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+### Construcción para producción
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Compila el proyecto para producción. Los archivos se generan en el directorio `dist/`.
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Ejecutar pruebas unitarias
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+Ejecuta las pruebas unitarias usando Karma.
 
-For end-to-end (e2e) testing, run:
+### Ejecutar pruebas end-to-end
 
 ```bash
 ng e2e
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Ejecuta las pruebas end-to-end usando Protractor.
 
-## Additional Resources
+### Análisis de código
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+ng lint
+```
+
+Ejecuta TSLint para analizar el código y detectar problemas de estilo.
+
+## Tecnologías utilizadas
+
+- **Angular 20** - Framework principal
+- **TypeScript** - Lenguaje de programación
+- **RxJS** - Programación reactiva
+- **Bootstrap** - Framework CSS (opcional)
