@@ -1,0 +1,24 @@
+<div
+  class="sidebar"
+  [ngClass]="{
+    collapsed: !showSidebar(),
+    show: showSidebar()
+  }"
+>
+  <div class="d-flex gap-3 p-3 border-bottom">
+    <h6 class="mb-0">Menú de Navegación</h6>
+  </div>
+  <ul class="sidebar-nav">
+    @for (item of menuItems; track item.label){
+    <li class="nav-item">
+      <a
+        [routerLink]="item.link"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <i [class]="item.icon"></i> {{ item.label }}
+      </a>
+    </li>
+    }
+  </ul>
+</div>

@@ -1,0 +1,58 @@
+<h2 class="h2">Crear una nueva posición</h2>
+<form class="row g-3" [formGroup]="positionForm" (ngSubmit)="onSubmit()">
+  <div class="col-md-6">
+    <label for="company" class="form-label">Empresa</label>
+    <select class="form-select" id="company" formControlName="idEmpresa">
+      <option value="" disabled selected>Seleccione una empresa</option>
+      @for(company of companiesService.listCompanies(); track company.id){
+      <option [value]="company.id">{{ company.razonSocial }}</option>
+      }
+    </select>
+  </div>
+  <div class="col-md-6">
+    <label for="product" class="form-label">Producto</label>
+    <select class="form-select" id="product" formControlName="idProducto">
+      <option value="" disabled selected>Seleccione un producto</option>
+      @for (product of productsService.listProducts(); track product.id) {
+      <option [value]="product.id">{{ product.nombre }}</option>
+      }
+    </select>
+  </div>
+  <div class="col-md-6">
+    <label for="inputDate" class="form-label">Fecha disponibilidad</label>
+    <input
+      type="date"
+      class="form-control"
+      id="inputDate"
+      formControlName="fechaEntregaInicio"
+    />
+  </div>
+  <div class="col-md-6">
+    <label for="currencySelect" class="form-label">Moneda</label>
+    <select class="form-select" id="currencySelect" formControlName="moneda">
+      <option value="USD" selected>USD (Dolar estadounidense)</option>
+      <option value="AR$">AR$ (Peso argentino)</option>
+    </select>
+  </div>
+  <div class="col-md-6">
+    <label for="inputPrice" class="form-label">Precio</label>
+    <input
+      type="number"
+      class="form-control"
+      id="inputPrice"
+      placeholder="Ingrese el precio"
+      min="0"
+      formControlName="precio"
+    />
+  </div>
+
+  <div class="col-12">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="positionForm.invalid"
+    >
+      Crear nueva posición
+    </button>
+  </div>
+</form>
