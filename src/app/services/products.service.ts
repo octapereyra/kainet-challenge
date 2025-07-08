@@ -10,15 +10,16 @@ export class ProductsService {
 
   listProducts = signal<Product[]>([]);
 
+  private readonly apiUrl =
+    'https://kainet-challenge-api-production.up.railway.app/api/productos';
+
   constructor() {
     this.loadProducts();
   }
 
   loadProducts() {
-    this.http
-      .get<ProductResponse>('http://127.0.0.1:8000/api/productos')
-      .subscribe((response) => {
-        this.listProducts.set(response.data);
-      });
+    this.http.get<ProductResponse>(this.apiUrl).subscribe((response) => {
+      this.listProducts.set(response.data);
+    });
   }
 }

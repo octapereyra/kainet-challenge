@@ -10,15 +10,16 @@ export class CompaniesService {
 
   listCompanies = signal<Company[]>([]);
 
+  private readonly apiUrl =
+    'https://kainet-challenge-api-production.up.railway.app/api/empresas';
+
   constructor() {
     this.loadCompanies();
   }
 
   loadCompanies() {
-    this.http
-      .get<CompanyResponse>('http://127.0.0.1:8000/api/empresas')
-      .subscribe((response) => {
-        this.listCompanies.set(response.data);
-      });
+    this.http.get<CompanyResponse>(this.apiUrl).subscribe((response) => {
+      this.listCompanies.set(response.data);
+    });
   }
 }

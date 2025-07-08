@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CompaniesService } from '../../services/companies.service';
 import { ProductsService } from '../../services/products.service';
 import { PositionsService } from '../../services/positions.service';
@@ -8,10 +8,11 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-create-position',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, DatePipe],
   templateUrl: './create-position.component.html',
 })
 export class CreatePosition {
@@ -19,6 +20,7 @@ export class CreatePosition {
   public productsService = inject(ProductsService);
   public positionService = inject(PositionsService);
 
+  today = signal(new Date());
   positionForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
@@ -26,7 +28,7 @@ export class CreatePosition {
       idEmpresa: ['', Validators.required],
       idProducto: ['', Validators.required],
       fechaEntregaInicio: ['', Validators.required],
-      moneda: ['', Validators.required],
+      moneda: ['USD', Validators.required],
       precio: ['', Validators.required],
     });
   }
